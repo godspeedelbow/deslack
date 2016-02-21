@@ -1,0 +1,27 @@
+{
+  "name": "deslack",
+  "version": "0.0.1",
+  "description": "Slack integration for the debug module. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/godspeedelbow/deslack.git"
+  },
+  "keywords": [
+    "debug",
+    "slack"
+  ],
+  "author": "godspeedelbow <eelke@peerby.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/godspeedelbow/deslack/issues"
+  },
+  "homepage": "https://github.com/godspeedelbow/deslack",
+  "dependencies": {
+    "debug": "^2.2.0",
+    "node-slack": "0.0.7"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "deslack",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Slack integration for the debug module. ",
   "main": "index.js",
   "scripts": {

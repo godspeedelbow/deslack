@@ -19,11 +19,12 @@ You are not looking at your terminal screen the whole day, in sharp contrast to 
 - [node-slack](https://github.com/xoxco/node-slack)
 
 
+## prepare
+
+- Create an `Incoming WebHooks` integration under Custom Integrations in your Slack account.
+
 ## setup
 
-- Setup an `Incoming WebHooks` integration under Custom Integrations in your Slack account.
-
-- setup `deslack`:
 
 ```
 var deslack = require('deslack')({
@@ -36,7 +37,7 @@ var deslack = require('deslack')({
 });
 ```
 
-The **first argument** is hash map between `debug` namespaces and Slack channel data:
+`require('deslack')` returns an initialization function that takes **two arguments**. The **first argument** is hash map between `debug` namespaces and Slack channel data:
 
 ```
 {
@@ -48,21 +49,18 @@ The **first argument** is hash map between `debug` namespaces and Slack channel 
 }
 ```
 
-The **second argument** is a function of which its return value indicates whether Slack messages should be sent. This can be handy to evaluate a config environment value. You can of course also provide custom channels for local/staging development, up to you.
+The **second argument** is a function of which its return value indicates whether Slack messages should be sent. This can be handy to evaluate a config environment value. You can of course also provide custom channels for local/staging development in the first argument if you want use Slack also for local development.
 
 ## using it
 
 ```
+var deslack = require('deslack')(...);
 deslack('example')('hi', 'this', 'works', { yo: true });
 ```
 
-**Note:** The value that's returned by `require('deslack')(...)` has the same api as `require('debug')`.
+After initializing `deslack`, it works exactly how `debug` works. To see `debug` output you need to start the node process with `DEBUG` enviroment, in this case `DEBUG=example`. If it is provided then `deslack` will pass your log statements onto both `debug` and `slack`.
 
-Start the process with `DEBUG=example`:
- - `debug` works exactly like how you'd expect it to
- - a Slack message is sent if a channel was setup for it
-
-If there's no `DEBUG` environment provided, then no Slack message will be sent (nor, of course, will any `debug` statements be logged for that environment).
+**Note:** If there's no `DEBUG` environment provided, then no Slack message will be sent (nor, of course, will any `debug` statements be logged for that environment).
 
 With regards to handling log arguments:
 - in order to send a single message String to Slack, the arguments are concatenated using [`util.format`](https://nodejs.org/docs/latest/api/util.html#util_util_format_format)

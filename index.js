@@ -39,6 +39,7 @@ function createSlackSender (slackProps) {
             channel: slackProps.channel,
             username: slackProps.username,
             text: text,
+            unfurl_links: false,
         });
     };
 }
